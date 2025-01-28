@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket IO</title>
+    <!-- Add Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .message.self {
+            text-align: right;
+            color: blue;
+        }
+
+        .message.other {
+            text-align: left;
+            color: green;
+        }
+
+        .sent-status {
+            font-size: 0.8em;
+            color: gray;
+
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-white font-sans flex justify-center items-center h-screen">
+
+    <!-- Mobile frame container -->
+    <div class="relative w-full max-w-md h-full bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-700 sm:max-w-sm flex flex-col">
+
+        <!-- Simulate a mobile header (e.g., time, signal) -->
+        <div class="absolute top-2 left-0 w-full flex justify-between items-center p-2 text-sm text-gray-400 z-10 bg-gray-800">
+            <span>10:30 AM</span>
+            <div class="flex space-x-1">
+                <span>🔋 80%</span>
+                <span>📶</span>
+            </div>
+        </div>
+
+        <!-- Connected Users Dropdown -->
+        <div class="p-4 pt-16">
+            <label for="user-dropdown" class="block text-lg font-semibold text-gray-300">Connected Users:</label>
+            <select id="user-dropdown"
+                class="mt-2 p-2 w-full border border-gray-700 rounded-lg bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
+                <option value="">Select User</option>
+            </select>
+        </div>
+
+        <!-- Chat Container (messages area) -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-700" id="chat-container">
+            <!-- Example Message -->
+            <!-- These static messages are now dynamically handled by the JavaScript -->
+        </div>
+
+        <!-- Chat Form (input area) -->
+        <form class="chat-form p-4 bg-gray-800 border-t border-gray-700" onsubmit="submitInput(event)">
+            <div class="flex">
+                <input type="text" id="message-input" name="message-input"
+                    class="flex-1 p-3 rounded-l-lg border border-gray-700 focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white"
+                    placeholder="Type your message">
+                <button type="submit"
+                    class="px-6 py-3 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Send
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+        integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" 
+        crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
